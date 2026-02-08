@@ -81,7 +81,7 @@ fun TasksScreen(
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 LinearProgressIndicator(
-                    progress = { if (totalCount > 0) completedCount.toFloat() / totalCount else 0f },
+                    progress = if (totalCount > 0) completedCount.toFloat() / totalCount else 0f,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(8.dp)

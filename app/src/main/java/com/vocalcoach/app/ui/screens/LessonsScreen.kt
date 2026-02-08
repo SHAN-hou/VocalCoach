@@ -19,6 +19,7 @@ import com.vocalcoach.app.data.model.*
 import com.vocalcoach.app.ui.theme.*
 import com.vocalcoach.app.ui.viewmodel.MainViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LessonsScreen(
     viewModel: MainViewModel

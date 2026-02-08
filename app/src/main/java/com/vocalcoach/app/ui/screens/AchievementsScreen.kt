@@ -89,11 +89,9 @@ fun AchievementsScreen(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         LinearProgressIndicator(
-                            progress = {
-                                if (achievements.isNotEmpty())
-                                    unlockedCount.toFloat() / achievements.size
-                                else 0f
-                            },
+                            progress = if (achievements.isNotEmpty())
+                                unlockedCount.toFloat() / achievements.size
+                            else 0f,
                             modifier = Modifier
                                 .fillMaxWidth(0.6f)
                                 .height(8.dp),

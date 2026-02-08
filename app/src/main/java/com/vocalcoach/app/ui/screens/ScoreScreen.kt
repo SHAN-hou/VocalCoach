@@ -247,7 +247,7 @@ private fun ScoreBar(
         }
         Spacer(modifier = Modifier.height(6.dp))
         LinearProgressIndicator(
-            progress = { value },
+            progress = value,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(10.dp)

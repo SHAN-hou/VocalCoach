@@ -278,7 +278,7 @@ private fun LevelProgressCard(progress: UserProgress) {
             }
             Spacer(modifier = Modifier.height(12.dp))
             LinearProgressIndicator(
-                progress = { progressInLevel },
+                progress = progressInLevel,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(12.dp)
