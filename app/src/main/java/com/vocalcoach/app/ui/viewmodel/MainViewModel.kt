@@ -77,6 +77,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun selectLesson(lesson: Lesson) {
+        _selectedLesson.value = lesson
+    }
+
     fun selectTask(task: DailyTask) {
         _selectedTask.value = task
         viewModelScope.launch {

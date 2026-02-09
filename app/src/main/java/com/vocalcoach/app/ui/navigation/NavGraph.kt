@@ -8,6 +8,9 @@ sealed class Screen(val route: String) {
     }
     data object Score : Screen("score")
     data object Lessons : Screen("lessons")
+    data object LessonDetail : Screen("lesson_detail/{lessonId}") {
+        fun createRoute(lessonId: Long) = "lesson_detail/$lessonId"
+    }
     data object Profile : Screen("profile")
     data object Achievements : Screen("achievements")
 }

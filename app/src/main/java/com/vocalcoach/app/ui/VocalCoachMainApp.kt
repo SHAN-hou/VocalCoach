@@ -147,7 +147,23 @@ fun VocalCoachMainApp(
             }
 
             composable(Screen.Lessons.route) {
-                LessonsScreen(viewModel = viewModel)
+                LessonsScreen(
+                    viewModel = viewModel,
+                    onLessonClick = { lesson ->
+                        viewModel.selectLesson(lesson)
+                        navController.navigate(Screen.LessonDetail.createRoute(lesson.id))
+                    }
+                )
+            }
+
+            composable(Screen.LessonDetail.route) {
+                LessonDetailScreen(
+                    viewModel = viewModel,
+                    onBack = { navController.popBackStack() },
+                    onStartPractice = {
+                        navController.popBackStack()
+                    }
+                )
             }
 
             composable(Screen.Profile.route) {

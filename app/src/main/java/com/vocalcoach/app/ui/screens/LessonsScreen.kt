@@ -1,6 +1,7 @@
 package com.vocalcoach.app.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -22,7 +23,8 @@ import com.vocalcoach.app.ui.viewmodel.MainViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LessonsScreen(
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    onLessonClick: (Lesson) -> Unit = {}
 ) {
     val allLessons by viewModel.allLessons.collectAsState()
     var selectedCategory by remember { mutableStateOf<LessonCategory?>(null) }
@@ -100,14 +102,17 @@ fun LessonsScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(filteredLessons) { lesson ->
-                LessonCard(lesson = lesson)
+                LessonCard(
+                    lesson = lesson,
+                    onClick = { onLessonClick(lesson) }
+                )
             }
         }
     }
 }
 
 @Composable
-private fun LessonCard(lesson: Lesson) {
+private fun LessonCard(lesson: Lesson, onClick: () -> Unit = {}) {
     val categoryColor = when (lesson.category) {
         LessonCategory.BREATHING -> RewardBlue
         LessonCategory.PITCH -> ChallengePink
@@ -124,7 +129,8 @@ private fun LessonCard(lesson: Lesson) {
         colors = CardDefaults.cardColors(
             containerColor = categoryColor.copy(alpha = 0.08f)
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        modifier = Modifier.clickable { onClick() }
     ) {
         Row(
             modifier = Modifier
