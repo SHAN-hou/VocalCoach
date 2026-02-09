@@ -15,8 +15,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -335,7 +333,7 @@ private fun PracticingContent(
         )
         // Progress ring background
         CircularProgressIndicator(
-            progress = { 1f },
+            progress = 1f,
             modifier = Modifier.size(160.dp),
             strokeWidth = 8.dp,
             color = MaterialTheme.colorScheme.surfaceVariant,
@@ -343,7 +341,7 @@ private fun PracticingContent(
         )
         // Progress ring
         CircularProgressIndicator(
-            progress = { progress },
+            progress = progress,
             modifier = Modifier.size(160.dp),
             strokeWidth = 8.dp,
             color = PracticeGreen,
